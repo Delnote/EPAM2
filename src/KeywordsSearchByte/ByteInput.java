@@ -8,6 +8,5 @@ public class ByteInput {
         keywordsFill.read();
         keywordsFill.keysCheck();
         keywordsFill.keysWrite();
-
     }
 }
