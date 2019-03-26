@@ -1,0 +1,15 @@
+class - 1
+do - 1
+else - 5
+for - 1
+if - 5
+import - 2
+int - 2
+new - 6
+package - 1
+private - 3
+protected - 1
+public - 1
+static - 1
+void - 3
+while - 3
