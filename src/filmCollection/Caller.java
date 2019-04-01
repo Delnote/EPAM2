@@ -3,8 +3,8 @@ package filmCollection;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static java.lang.System.in;
 import static filmCollection.MySerializator.*;
+import static java.lang.System.in;
 
 public class Caller {
 
@@ -32,24 +32,48 @@ public class Caller {
         String rowChooseAction = input.next();
         if (rowChooseAction.equalsIgnoreCase("a")) {
             System.out.println("Enter film title: ");
-            String title = input.nextLine();
+            String title = "";
             while (title.length() == 0) {
                 title = input.nextLine();
             }
             System.out.println("Enter actor name: ");
-            String actor = input.nextLine();
+            String actor = "";
             while (actor.length() == 0) {
                 actor = input.nextLine();
             }
             addNewFilm(title, actor);
             editFilmCollection();
-//        } else if (rowChooseAction.equalsIgnoreCase("e")) {
-//            removeFilm();
+        } else if (rowChooseAction.equalsIgnoreCase("e")) {
+            System.out.println("Search film by title: ");
+            String title = "";
+            while (title.length() == 0) {
+                title = input.nextLine();
+                while (getNewFilm().getFilmCol().get(title) == null) {
+                    System.out.println("Film not found, try again:");
+                    title = input.nextLine();
+                }
+            }
+            System.out.println("Eвше actor name: ");
+            String actor = "";
+            while (actor.length() == 0) {
+                actor = input.nextLine();
+            }
+            getNewFilm().getFilmCol().replace(title, actor);
+            System.out.printf("You edited film \"%s\". \n\n", title);
+            editFilmCollection();
         } else if (rowChooseAction.equalsIgnoreCase("r")) {
             System.out.println("Enter film title: ");
-            String title = input.next();
-            // check valid title here !!!
+            String title = "";
+            while (title.length() == 0) {
+                title = input.nextLine();
+                while (getNewFilm().getFilmCol().get(title) == null) {
+                    System.out.println("Film not found, try again:");
+                    title = input.nextLine();
+                }
+            }
             removeFilm(title);
+            System.out.println("Film " + title + " removed from collection.\n");
+            editFilmCollection();
         }  else if (rowChooseAction.equalsIgnoreCase("s")) {
             serializeToFile(fileName);
             System.out.println("Film collection serialized to file: " + fileName);

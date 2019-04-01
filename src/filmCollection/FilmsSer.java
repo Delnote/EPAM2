@@ -16,26 +16,7 @@ public class FilmsSer {
 
         caller.editFilmCollection();
 
-
-//        deserialization(fileName);
-
-//        addNewFilm("Test2", "Various actor");
-
         serializeToFile(fileName);
-
-//        FileInputStream fis = new FileInputStream("FilmsCollection.txt");
-//        ObjectInputStream ois = new ObjectInputStream(fis);
-//        Film newFilmCol = (Film) ois.readObject();
-//        ois.close();
-//        newFilmCol.simpleView();
-
-//        newFilmCol.getFilmCol().put("One more interesting film", "Another other actor");
-//
-//        FileOutputStream fos = new FileOutputStream("FilmsCollection.txt");
-//        ObjectOutputStream oos = new ObjectOutputStream(fos);
-//        oos.writeObject(film);
-//        oos.close();
-
     }
 
 }
