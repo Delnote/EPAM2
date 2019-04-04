@@ -8,7 +8,6 @@ import static org.junit.Assert.*;
 
 public class KeywordsFillTest {
 
-
     private String keywordsFile;
     private KeywordsFill keywordsFill;
     private String javaCodeFile;
