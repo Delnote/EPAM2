@@ -20,7 +20,7 @@ public class KeywordsFill {
                 keysBuilder.append((char) s);
             }
         } catch (IOException e) {
-            System.out.println("Exception");;
+            System.out.println("Exception");
         }
         return new ArrayList<>(Arrays.asList(keysBuilder.toString().split(" ")));
     }
@@ -40,19 +40,19 @@ public class KeywordsFill {
         return javaCodeText.toString();
     }
 
-    protected static String keysCheck (ArrayList<String> keysInArray, String javaCodeToSearch) {
+    protected static String keysCheck (ArrayList<String> keysInArray, String javaCodeToSearch) throws NullPointerException {
         int count = 0;
         String resultToFile = "";
 
         for (int i = 0; i < keysInArray.size(); i++) {
-            Pattern p = Pattern.compile("\\b" + keysInArray.get(i) + "\\b", Pattern.UNICODE_CASE|Pattern.CASE_INSENSITIVE);
+            Pattern p = Pattern.compile("\\b" + keysInArray.get(i) + "\\b", Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
             Matcher m = p.matcher(javaCodeToSearch);
-            while(m.find()) {
+            while (m.find()) {
                 count++;
             }
             if (count != 0) {
                 resultToFile += keysInArray.get(i) + " - " + count + System.getProperty("line.separator");
-            }
+        }
             count = 0;
         }
         return resultToFile;

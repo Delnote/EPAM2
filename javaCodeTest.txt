@@ -1,1 +1,1 @@
-class else for if\if int new private.else protected - else. public return static while new? (return)
+classelse forif\ifint newprivate.elseprotected - elsepublic returnstatic whilenew? (returnr)

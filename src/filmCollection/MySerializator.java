@@ -1,39 +1,30 @@
 package filmCollection;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class MySerializator {
 
-    private static Film newFilm;
+    static ArrayList<Film> newFilms = new ArrayList<>();
 
-    protected static void deserialization(String fileName) throws IOException, ClassNotFoundException {
+    public static void deserialization(String fileName) throws IOException, ClassNotFoundException {
         FileInputStream fis = new FileInputStream(fileName);
         ObjectInputStream ois = new ObjectInputStream(fis);
-        newFilm = (Film) ois.readObject();
+        newFilms = (ArrayList<Film>) ois.readObject();
         ois.close();
-//        newFilm.simpleView();
+        int i = 1;
+        for (Film f : newFilms) {
+            System.out.printf("%d. \t Title: %s \t Year: %d \t  Main Actor: %s \t Second Actor: %s \n", i, f.getTitle(), f.getYear(), f.getMainActor(), f.getSecondActor());
+            i++;
+        }
     }
 
-    public static void addNewFilm(String title, String actor) {
-
-        newFilm.getFilmCol().put(title, actor);
-    }
-
-    public static void removeFilm(String title) {
-
-        newFilm.getFilmCol().remove(title);
-
-    }
-
-    protected static void serializeToFile(String fileName) throws IOException {
+    public static void serializeToFile(String fileName) throws IOException {
 
     FileOutputStream fos = new FileOutputStream(fileName);
     ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(newFilm);
+        oos.writeObject(newFilms);
         oos.close();
     }
 
-    public static Film getNewFilm() {
-        return newFilm;
-    }
 }
