@@ -24,7 +24,7 @@ public class Caller {
     }
 
 
-    protected void editFilmCollection() throws IOException, ClassNotFoundException {
+    protected void editFilmCollection() throws IOException {
         System.out.println("Want to add(a), remove element(r) or save(s) collection? (a/r/s):");
         Scanner input = new Scanner(in);
         String rowChooseAction = input.next();

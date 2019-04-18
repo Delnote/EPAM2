@@ -14,6 +14,7 @@ public class MySerializator {
         ois.close();
         int i = 1;
         for (Film f : newFilms) {
+
             System.out.printf("%d. \t Title: %s \t Year: %d \t  Main Actor: %s \t Second Actor: %s \n", i, f.getTitle(), f.getYear(), f.getMainActor(), f.getSecondActor());
             i++;
         }
