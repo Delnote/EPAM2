@@ -7,11 +7,16 @@ public class MySerializator {
 
     static ArrayList<Film> newFilms = new ArrayList<>();
 
-    public static void deserialization(String fileName) throws IOException, ClassNotFoundException {
-        FileInputStream fis = new FileInputStream(fileName);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        newFilms = (ArrayList<Film>) ois.readObject();
-        ois.close();
+    public static void deserialization(String fileName) {
+        try (FileInputStream fis = new FileInputStream(fileName);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            newFilms = (ArrayList<Film>) ois.readObject();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         int i = 1;
         for (Film f : newFilms) {
 
@@ -20,12 +25,13 @@ public class MySerializator {
         }
     }
 
-    public static void serializeToFile(String fileName) throws IOException {
+    public static void serializeToFile(String fileName) {
 
-    FileOutputStream fos = new FileOutputStream(fileName);
-    ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(newFilms);
-        oos.close();
+        try (FileOutputStream fos = new FileOutputStream(fileName);
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(newFilms);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
 }
